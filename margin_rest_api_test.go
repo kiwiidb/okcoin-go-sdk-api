@@ -1,9 +1,10 @@
 package okex
 
 import (
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 const (
@@ -156,8 +157,8 @@ func TestPostMarginBatchOrders(t *testing.T) {
 	c := NewTestClient()
 
 	orderInfos := []map[string]string{
-		map[string]string{"client_oid": "w20180728w", "instrument_id": "btc-usdt", "side": "sell", "type": "limit", "size": "0.001", "price": "10001", "margin_trading ": "1"},
-		map[string]string{"client_oid": "r20180728r", "instrument_id": "btc-usdt", "side": "sell", "type": "limit", " size ": "0.001", "notional": "10002", "margin_trading ": "1"},
+		{"client_oid": "w20180728w", "instrument_id": "btc-usdt", "side": "sell", "type": "limit", "size": "0.001", "price": "10001", "margin_trading ": "1"},
+		{"client_oid": "r20180728r", "instrument_id": "btc-usdt", "side": "sell", "type": "limit", " size ": "0.001", "notional": "10002", "margin_trading ": "1"},
 	}
 
 	r, err := c.PostMarginBatchOrders(&orderInfos)

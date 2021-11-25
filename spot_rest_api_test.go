@@ -2,9 +2,10 @@ package okex
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestGetSpotAccounts(t *testing.T) {
@@ -152,8 +153,8 @@ func TestClient_PostSpotBatchOrders(t *testing.T) {
 	c := NewTestClient()
 
 	orderInfos := []map[string]string{
-		map[string]string{"client_oid": "w20180728w", "instrument_id": "btc-usdt", "side": "sell", "type": "limit", "size": "0.001", "price": "10001", "margin_trading ": "1"},
-		map[string]string{"client_oid": "r20180728r", "instrument_id": "btc-usdt", "side": "sell", "type": "limit", " size ": "0.001", "notional": "10002", "margin_trading ": "1"},
+		{"client_oid": "w20180728w", "instrument_id": "btc-usdt", "side": "sell", "type": "limit", "size": "0.001", "price": "10001", "margin_trading ": "1"},
+		{"client_oid": "r20180728r", "instrument_id": "btc-usdt", "side": "sell", "type": "limit", " size ": "0.001", "notional": "10002", "margin_trading ": "1"},
 	}
 
 	r, err := c.PostSpotBatchOrders(&orderInfos)
@@ -166,8 +167,8 @@ func TestClient_PostSpotCancelBatchOrders(t *testing.T) {
 	c := NewTestClient()
 
 	orderInfos := []map[string]interface{}{
-		map[string]interface{}{"instrument_id": "btc-usdt", "client_oids": []string{"16ee593327162368"}},
-		map[string]interface{}{"instrument_id": "ltc-usdt", "client_oids": []string{"16ee5933271623682"}},
+		{"instrument_id": "btc-usdt", "client_oids": []string{"16ee593327162368"}},
+		{"instrument_id": "ltc-usdt", "client_oids": []string{"16ee5933271623682"}},
 	}
 
 	r, err := c.PostSpotCancelBatchOrders(&orderInfos)

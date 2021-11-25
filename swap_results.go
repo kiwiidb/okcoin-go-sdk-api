@@ -18,7 +18,7 @@ type SwapPositionHolding struct {
 	RealizedPnl      string `json:"realized_pnl"`
 	Side             string `json:"side"`
 	Timestamp        string `json:"timestamp"`
-	Margin           string `json:"margin";default:""`
+	Margin           string `json:"margin"`
 }
 
 type SwapPosition struct {

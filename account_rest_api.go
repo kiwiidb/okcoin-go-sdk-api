@@ -131,6 +131,21 @@ func (client *Client) GetAccountDepositAddress(currency string) (*[]map[string]i
 	return &r, nil
 }
 
+func (client *Client) GetAccountDepositLightning(currency, amount, to string) (*[]map[string]interface{}, error) {
+	r := []map[string]interface{}{}
+	params := NewParams()
+	params["ccy"] = currency
+	params["amount"] = amount
+	params["to"] = to
+
+	uri := BuildParams(ACCOUNT_DEPOSIT_LIGHTNING, params)
+
+	if _, err := client.Request(GET, uri, nil, &r); err != nil {
+		return nil, err
+	}
+	return &r, nil
+}
+
 /*
 获取所有币种充值记录
 获取所有币种的充值记录。为最近一百条数据
@@ -209,6 +224,22 @@ func (client *Client) PostAccountWithdrawal(
 	withdrawlInfo["trade_pwd"] = trade_pwd
 
 	if _, err := client.Request(POST, ACCOUNT_WITHRAWAL, withdrawlInfo, &r); err != nil {
+		return nil, err
+	}
+
+	return &r, nil
+}
+func (client *Client) PostAccountWithdrawalLightning(
+	currency, invoice, pwd string) (*map[string]interface{}, error) {
+
+	r := map[string]interface{}{}
+
+	withdrawlInfo := map[string]interface{}{}
+	withdrawlInfo["currency"] = currency
+	withdrawlInfo["invoice"] = invoice
+	withdrawlInfo["pwd"] = pwd
+
+	if _, err := client.Request(POST, ACCOUNT_WITHRAWAL_LIGHTNING, withdrawlInfo, &r); err != nil {
 		return nil, err
 	}
 

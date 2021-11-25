@@ -2,9 +2,10 @@ package okex
 
 import (
 	"fmt"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 const (
@@ -447,8 +448,8 @@ func TestPostFuturesAPI(t *testing.T) {
 	fmt.Printf("%+v \n", r)
 
 	orderDatas := []map[string]string{
-		map[string]string{"order_type": "0", "price": "5", "size": "2", "type": "1", "match_price": "1"},
-		map[string]string{"order_type": "0", "price": "2", "size": "3", "type": "1", "match_price": "1"},
+		{"order_type": "0", "price": "5", "size": "2", "type": "1", "match_price": "1"},
+		{"order_type": "0", "price": "2", "size": "3", "type": "1", "match_price": "1"},
 	}
 
 	r, _ = c.PostFuturesOrders(validInstId, orderDatas, "20", nil)

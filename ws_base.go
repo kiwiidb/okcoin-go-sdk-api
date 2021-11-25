@@ -86,7 +86,7 @@ func (st *SubscriptionTopic) ToString() (topic string, err error) {
 
 type WSEventResponse struct {
 	Event   string `json:"event"`
-	Success string `json:success`
+	Success string `json:"success"`
 	Channel string `json:"channel"`
 }
 
@@ -96,7 +96,7 @@ func (r *WSEventResponse) Valid() bool {
 
 type WSTableResponse struct {
 	Table  string        `json:"table"`
-	Action string        `json:"action",default:""`
+	Action string        `json:"action"`
 	Data   []interface{} `json:"data"`
 }
 
@@ -225,7 +225,7 @@ func calCrc32(askDepths *[][4]interface{}, bidDepths *[][4]interface{}) (bytes.B
 
 type WSDepthTableResponse struct {
 	Table  string        `json:"table"`
-	Action string        `json:"action",default:""`
+	Action string        `json:"action"`
 	Data   []WSDepthItem `json:"data"`
 }
 

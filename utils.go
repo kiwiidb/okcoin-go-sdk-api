@@ -147,7 +147,7 @@ func IsoTime() string {
 func LongTimeToUTC8(longTime int64) time.Time {
 	timeString := Int64ToString(longTime)
 	sec := timeString[0:10]
-	nsec := timeString[10:len(timeString)]
+	nsec := timeString[10:]
 	return time.Unix(StringToInt64(sec), StringToInt64(nsec))
 }
 
