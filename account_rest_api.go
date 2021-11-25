@@ -131,8 +131,8 @@ func (client *Client) GetAccountDepositAddress(currency string) (*[]map[string]i
 	return &r, nil
 }
 
-func (client *Client) GetAccountDepositLightning(currency, amount, to string) (*[]map[string]interface{}, error) {
-	r := []map[string]interface{}{}
+func (client *Client) GetAccountDepositLightning(currency, amount, to string) (*map[string]interface{}, error) {
+	r := map[string]interface{}{}
 	params := NewParams()
 	params["ccy"] = currency
 	params["amount"] = amount
